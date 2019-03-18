@@ -22,7 +22,7 @@ app.use(
 app.use(bodyParser.json());
 app.use(morgan('dev'));
 
-//swagger api
+//genrating swagger api
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 //routing
 app.use('/api/restaurant', restaurantRouter);
