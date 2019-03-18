@@ -59,23 +59,23 @@ $ npm run dev
     To do it, I will first create an util folder, here i can add a crud.js file. In this javascript file I will put in the generic crud operations:
 ```js
 export const getOne = model => async (req, res) => {
-    code for mongoosemodel.findOne here
+    //code for mongoosemodel.findOne here
 }
 
 export const getMany = model => async (req, res) => {
-    code for mongoosemodel.find here
+    //code for mongoosemodel.find here
 }
 
 export const createOne = model => async (req, res) => {
-    code for mongoosemodel.create here
+    //code for mongoosemodel.create here
 }
 
 export const updateOne = model => async (req, res) => {
-    code for mongoosemodel.findOneAndUpdate here
+    //code for mongoosemodel.findOneAndUpdate here
 }
 
 export const removeOne = model => async (req, res) => {
-    code for mongoosemodel.removeone here
+    //code for mongoosemodel.removeone here
 }
 
 export const crudControllers = model => ({
