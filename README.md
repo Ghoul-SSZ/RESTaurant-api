@@ -52,7 +52,7 @@ $ npm run dev
     export const getOne = model => async (req, res) => {
   try {
     const doc = await model
-      .findOne({ createdBy: req.user._id, _id: req.params.id })
+      .findOne({ id: req.params.id })
       .lean()
       .exec()
 
@@ -70,7 +70,7 @@ $ npm run dev
 export const getMany = model => async (req, res) => {
   try {
     const docs = await model
-      .find({ createdBy: req.user._id })
+      .find()
       .lean()
       .exec()
 
@@ -97,8 +97,7 @@ export const updateOne = model => async (req, res) => {
     const updatedDoc = await model
       .findOneAndUpdate(
         {
-          createdBy: req.user._id,
-          _id: req.params.id
+          id: req.params.id
         },
         req.body,
         { new: true }
@@ -120,8 +119,7 @@ export const updateOne = model => async (req, res) => {
 export const removeOne = model => async (req, res) => {
   try {
     const removed = await model.findOneAndRemove({
-      createdBy: req.user._id,
-      _id: req.params.id
+      id: req.params.id
     })
 
     if (!removed) {
@@ -148,7 +146,7 @@ export const crudControllers = model => ({
    
    And then for every new endpoint(for example, localhost:3000/club), instead of having to rewrite CRUD, I can simply reuse this crud.js for my new controller(e.g. clubControllers.js):
 
-```
+```js
 //import generic crud controller
 import { crudControllers } from '../utils/crud'
 //improt MongoDB schema model
@@ -159,7 +157,7 @@ export default crudControllers(Item)
 
   And if I want to do one operation differently. I can just overwrite it in clubController.js file. 
   
-```
+```js
 //import generic crud controller
 import { crudControllers } from '../utils/crud'
 //improt MongoDB schema model
