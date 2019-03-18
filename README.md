@@ -60,22 +60,18 @@ $ npm run dev
 ```js
 export const getOne = model => async (req, res) => {
     code for mongoosemodel.findOne here
-
 }
 
 export const getMany = model => async (req, res) => {
     code for mongoosemodel.find here
-
 }
 
 export const createOne = model => async (req, res) => {
     code for mongoosemodel.create here
-
 }
 
 export const updateOne = model => async (req, res) => {
     code for mongoosemodel.findOneAndUpdate here
-
 }
 
 export const removeOne = model => async (req, res) => {
