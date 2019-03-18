@@ -45,7 +45,7 @@ $ npm run dev
     -   model folder contains all Mongoose Model Schemas
     -   router folder contains all router javascript files
 3. I divided the folders so that it is easier to maintain. And I think it is more clear to see which one is which this way. for example. configurations are in the config.js file in config folder. future configuration stuff can be added in the folder so we don't lose track of stuff :)
-4. The reason I uses process.env.PORT aswell instead of just 3000 is that later on if we deploy the server on Heroku for example, heroku will assign a port for the server instead of allowing us to specify it.
+4. The reason I uses process.env.PORT aswell instead of just 3000 is that later on if we deploy the server on a cloud service such as Heroku, heroku will assign a port for the server instead of allowing us to specify it.
 5. For sorting and filtering, I essentially just pass in the arguments in the url to sent to the server, and then let the server figure out what user wants from the arguments. The server will then call for MongoDB and do the sorting and fitlering there. I think this is a better practise. because I do not want to let the sorting done on the client side, especially when the data is huge. When we do it on the server side using Mongo however, is rather efficient and quick. 
 ## Possible improvements / bugs
 - BUGS: Right now the id is not enforced to be unique. so technically I can POST an restaurant that uses an existing id. annd when we are asked to display more info based on that id. more than one document will show up.
