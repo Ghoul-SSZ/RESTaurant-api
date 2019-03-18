@@ -1,0 +1,207 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Restaurant API",
+    "description": "This is a restaurt api for getting local restaurant information. ",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:3000",
+  "basePath": "/api",
+  "tags": [
+    {
+      "name": "RESTaurants",
+      "description": "API for getting restaurant information"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/restaurant": {
+      "post": {
+        "tags": [
+          "RESTaurants"
+        ],
+        "description": "Create new restaurant document in system",
+        "parameters": [
+          {
+            "name": "restaurant",
+            "in": "body",
+            "description": "Restaurant that we want to create",
+            "schema": {
+              "$ref": "#/definitions/RESTaurant"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "New Restaurant is created",
+            "schema": {
+              "$ref": "#/definitions/RESTaurant"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "RESTaurants"
+        ],
+        "summary": "Get all restaurants in system",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/restaurant/{Id}": {
+      "parameters": [
+        {
+          "name": "Id",
+          "in": "path",
+          "required": true,
+          "description": "ID of restaurant that we want to find",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": [
+          "RESTaurants"
+        ],
+        "summary": "Get restaurant with given ID",
+        "responses": {
+          "200": {
+            "description": "Restaurant is found",
+            "schema": {
+              "$ref": "#/definitions/RESTaurant"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete restaurant with given ID",
+        "tags": [
+          "RESTaurants"
+        ],
+        "responses": {
+          "200": {
+            "description": "Restaurant is deleted",
+            "schema": {
+              "$ref": "#/definitions/RESTaurant"
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update restaurant with give ID",
+        "tags": [
+          "RESTaurants"
+        ],
+        "parameters": [
+          {
+            "name": "restaurant",
+            "in": "body",
+            "description": "Restaurant with new values of properties",
+            "schema": {
+              "$ref": "#/definitions/RESTaurant"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Restaurant is updated",
+            "schema": {
+              "$ref": "#/definitions/RESTaurant"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "RESTaurant": {
+      "required": [
+        "id",
+        "name",
+        "address"
+      ],
+      "properties": {
+        "id": {
+          "type": "number",
+          "uniqueItems": true
+        },
+        "name": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "address": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "phone_number": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "Rating": {
+          "type": "number",
+          "uniqueItems": true
+        },
+        "price_level": {
+          "type": "number",
+          "uniqueItems": true
+        },
+        "website": {
+          "type": "string"
+        },
+        "photo": {
+          "type": "string"
+        },
+        "icon": {
+          "type": "string"
+        },
+        "google_map_url": {
+          "type": "string"
+        },
+        "location": {
+          "type": "object",
+          "properties": {
+            "Lat": {
+              "type": "number"
+            },
+            "Lng": {
+              "type": "number"
+            }
+          }
+        },
+        "Opening_hours": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "example": [
+            "Monday: 11:30 AM – 2:00 PM",
+            "Tuesday: 11:30 AM – 2:00 PM, 5:00 – 11:00 PM",
+            "Wednesday: 11:30 AM – 2:00 PM, 5:00 – 11:00 PM",
+            "Thursday: 11:30 AM – 2:00 PM, 5:00 – 11:00 PM",
+            "Friday: 11:30 AM – 2:00 PM, 5:00 – 11:00 PM",
+            "Saturday: 5:00 – 11:00 PM",
+            "Sunday: Closed"
+          ]
+        }
+      }
+    }
+  }
+}
